@@ -1,0 +1,126 @@
+
+<!doctype html>
+<html lang="en">
+{% load static %}
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+  <meta name="generator" content="Jekyll v3.8.5">
+  <title>Nihas|home</title>
+
+  <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+      <link href="https://fonts.googleapis.com/css?family=Permanent+Marker" rel="stylesheet">
+
+  <style>
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+    </style>
+  <!-- Custom styles for this template -->
+
+</head>
+<body>
+<header>
+  <nav class="navbar navbar-expand-md navbar-dark  mb-4" style="background-color: #001c18;">
+  <a class="navbar-brand" href="{% url 'home' %}">Ahmed Nihas A</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarCollapse">
+    <ul class="navbar-nav ml-auto">
+      <li class="nav-item ">
+        <a class="nav-link" href="http://www.instagram.com/nihas_ahmed">Instagram </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'shop' %}">Shop</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link " href="#">Blog</a>
+      </li>
+    </ul>
+
+  </div>
+</nav>
+
+</header>
+
+<main role="main">
+
+  <section class="jumbotron p-0 text-center" style="background-image:url({% static "mainpage/cover2.jpg" %});">
+    <div class="container pt-1 ">
+      <image class="img-fluid img-thumbnail " src = '{% static "mainpage/nihas.jpg" %}' style = "height:200px;" alt = "My Image">
+      <h1 class="jumbotron-heading text-white">Hey! I am Nihas</h1>
+      <p class="lead text-white"> This is my portfolio. I am a self taught artist. Dream is to do an exhibition. Checkout my art ,if you like it you can order a print. Cheers!</p>
+      <p>
+        <a href="mailto:nihas2012@gmail.com" class="btn btn-primary my-2">Email me</a>
+
+      </p>
+    </div>
+  </section>
+
+  <h1 class="display-4 text-center pt-3" style="font-family:'Permanent Marker', cursive;">"The principles of true art is not to portray, but to evoke" <br><small class="lead text-muted">-Jerzy Kosinski</small></h1>
+
+
+
+
+  <div class="album py-5 bg-light" ">
+    <div class="container">
+
+      <div class="row">
+        {% for images in content %}
+        <div class="col-md-4">
+          <div class="card mb-4 shadow-sm">
+            <img class="bd-placeholder-img card-img-top img-fluid mx-auto d-block pt-2"  style = "max-height:225px;max-width:225px;width: auto;height: auto;" src = '{{images.art.url}}' >
+            <div class="card-body text-center">
+              <h4 class="card-text"><a href="details/{{images.id}}">{{images.title}}</a></h4>
+
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+      <div class="pagination mx-auto">
+    <span class="step-links mx-auto ">
+        {% if content.has_previous %}
+            <a class="btn btn-primary" role="button" href="?page=1">&laquo; first</a>
+            <a class="btn btn-primary" role="button"href="?page={{ content.previous_page_number }}">previous</a>
+        {% endif %}
+
+        <span class="current">
+            Page {{ content.number }} of {{ content.paginator.num_pages }}.
+        </span>
+
+        {% if content.has_next %}
+            <a class="btn btn-primary " role="button" href="?page={{ content.next_page_number }}">next</a>
+            <a class="btn btn-primary" role="button" href="?page={{ content.paginator.num_pages }}">last &raquo;</a>
+        {% endif %}
+    </span>
+</div>
+  </div>
+
+</main>
+
+<footer class="text-muted">
+  <div class="container">
+    <p class="float-right">
+      <a href="#">Back to top</a>
+    </p>
+    <p class="text-center">Nihas Ahmed  &copy; 2019</p>
+  </div>
+</footer>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+</body>
+</html>

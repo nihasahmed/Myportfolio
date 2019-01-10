@@ -1,0 +1,131 @@
+
+<!doctype html>
+<html lang="en">
+{% load static %}
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+  <meta name="generator" content="Jekyll v3.8.5">
+  <title>{{content.title}}</title>
+
+  <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Permanent+Marker" rel="stylesheet">
+  <style>
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+    </style>
+  <!-- Custom styles for this template -->
+
+</head>
+<body>
+<header>
+  <nav class="navbar navbar-expand-md navbar-dark  mb-4" style="background-color: #001c18;">
+  <a class="navbar-brand" href="{% url 'home' %}">Ahmed Nihas A</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarCollapse">
+    <ul class="navbar-nav ml-auto">
+      <li class="nav-item ">
+        <a class="nav-link" href="http://www.instagram.com/nihas_ahmed">Instagram </a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link" href="#">Shop</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link " href="#">Blog</a>
+      </li>
+    </ul>
+
+  </div>
+</nav>
+
+</header>
+
+<main role="main" class="bg-light">
+
+
+
+
+
+  <div id="carouselExampleIndicators" class="carousel slide " data-ride="carousel" data-interval="2000">
+  <ol class="carousel-indicators">
+    <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+    <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+    <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+  </ol>
+  <div class="carousel-inner  " style="background-color: #001714">
+
+      {% for ob in content %}
+      {% if forloop.first %}
+        <div class="carousel-item active">
+    {% else %}
+        <div class="carousel-item">
+    {% endif %}
+        <div class="text-center">
+      <img class="mx-auto d-block w-100 img-fluid"  style = "max-height:400px;max-width:400px;width: auto;height: auto;" src="{{ob.art.url}}" alt="{{ob.title}}">
+        </div>
+        </div>
+        {% endfor %}
+  </div>
+  <a class="carousel-control-prev " style="background-color: #001c18;" href="#carouselExampleIndicators" role="button" data-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="carousel-control-next " style="background-color: #001c18;" href="#carouselExampleIndicators" role="button" data-slide="next">
+    <span class="carousel-control-next-icon text-dark" aria-hidden="true"></span>
+    <span class="sr-only text-dark ">Next</span>
+  </a>
+</div>
+
+
+<h1 class="display-4 text-center pt-3" style="font-family:'Permanent Marker', cursive;color:#001c18;">Life is short.Buy Art.Drink Wine.Order Dessert. <small class="lead text-muted">-somebody</small></h1>
+<hr>
+  <div class="album py-5 bg-light">
+    <div class="container">
+
+      <div class="row">
+        {% for images in content %}
+        <div class="col-md-4">
+          <div class="card mb-4 shadow-sm">
+            <img class="bd-placeholder-img card-img-top img-fluid mx-auto d-block pt-2"  style = "max-height:225px;max-width:225px;width: auto;height: auto;" src = '{{images.art.url}}' >
+            <div class="card-body text-center">
+              <h4 class="card-text"><a href="details/{{images.id}}">{{images.title}}</a></h4>
+
+            </div>
+              <div class="btn-group">
+                      <a href="{% url 'details' images.id  %}" role="button" class="btn btn-outline-primary my-2">View</a>
+                    {% if images.medium == "Traditional" %}<a href="details/{{images.id}}" role="button" class="btn btn-success my-2">Buy Original</a>
+                    {% else %}<a href="details/{{images.id}}" role="button" class="btn btn-success my-2">Buy Print</a>
+                    {% endif %}</div>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</main>
+<footer class="text-muted" style="background-color: #001714;">
+  <div class="container">
+    <p class="float-right">
+      <a href="#">Back to top</a>
+    </p>
+    <p>Album example is &copy; Bootstrap, but please download and customize it for yourself!</p>
+  </div>
+</footer>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+</body>
+</html>
