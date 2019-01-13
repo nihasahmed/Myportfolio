@@ -1,6 +1,9 @@
 ### Django ###
 *.pyc
 db.sqlite3
+<<<<<<< HEAD
 myvenv
 __pycache__
 local_settings.py
+=======
+>>>>>>> d5e5c38b5bbaceb8c5c1fd81640e866c1e390aa3
