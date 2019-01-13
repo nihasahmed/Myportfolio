@@ -41,10 +41,10 @@
       <li class="nav-item ">
         <a class="nav-link" href="http://www.instagram.com/nihas_ahmed">Instagram </a>
       </li>
-      <li class="nav-item">
+      <li class="nav-item active">
         <a class="nav-link" href="{% url 'shop' %}">Shop</a>
       </li>
-      <li class="nav-item active">
+      <li class="nav-item">
         <a class="nav-link " href="{% url 'blog' %}">Blog</a>
       </li>
     </ul>
@@ -53,33 +53,46 @@
 </nav>
 
 </header>
-<div class="container ">
-  <h1 class="display-4 text-center pt-3" style="font-family:'Permanent Marker', cursive;color:#001c18;">Welcome to my blog </h1>
 
-<div class="col-sm-6 mx-auto ">
-{% for contents in content %}
-<!-- <div class="col-sm-6 col-sm-offset-3"> -->
-<div class="row py-3 r">
-  <div class="card col-sm-12  shadow-sm">
-    <img class="bd-placeholder-img card-img-top img-fluid mx-auto d-block pt-2"  style = "max-height:225px;max-width:225px;width: auto;height: auto;" src = '{{contents.pic.url}}' >
-    <div class="card-body ">
-      <h4 class="card-text"><a href="details/{{images.id}}">{{contents.title}}</a><span class="text-muted lead">  {{ contents.postdate|timesince }} ago<span></h4>
-      <p>{{contents.content|truncatechars:120}}</p>
-      <a href="posts/{{contents.id}}" role="button" class="btn btn-info btn-block my-2">View Post</a>
+<main role="main">
+
+
+
+
+
+  <div class="album py-5 bg-light">
+    <div class="container">
+      <a href="{% url 'blog'%}" role="button" class="btn btn-info btn-small my-2">Back to blog home</a>
+
+
+
+            <div class="text-center">
+              <h1 class="card-text display-3">{{content.title}}</h1>
+            <image class="img-fluid img-thumbnail " src = '{{content.pic.url}}' style = "height:600px;" alt = "My Image">
+            </div>
+            <div class="card-body text-center">
+
+
+                <hr>
+                <p class="text-justify blockquote ">&nbsp;&nbsp;&nbsp;&nbsp; {{content.content}}</p>
+                <a href="{% url 'blog'%}" role="button" class="btn btn-info btn-block my-2">Back to blog home</a>
+
+            </div>
+
+
+
+
     </div>
   </div>
-</div>
-{% endfor %}
 
-</div>
-</div>
-<footer class="text-muted ">
+</main>
+
+<footer class="text-muted">
   <div class="container">
     <p class="float-right">
-      <a href="#">Back to top</a>s
+      <a href="#">Back to top</a>
     </p>
     <p class="text-center">Nihas Ahmed  &copy; 2019</p>
-
   </div>
 </footer>
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
